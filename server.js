@@ -8,6 +8,11 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
+
+app.get('/hola', function(req, res) {
+    res.render('a1-1-5');
+});
+
 app.listen(port, function(){
     console.log('Tu aplicacio esta executant-se en el port: ' + port);
 });
