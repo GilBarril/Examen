@@ -86,7 +86,7 @@ return ((window.ontouchstart) ||
 
 
 
-var answers,destins,contenidor;
+var answers,destins,contenidor,valid;
 
 var preguntes = [{pregunta:"Qui és l'imprescindible en aquesta vida?",
                   opcions:
@@ -158,7 +158,8 @@ contenidor.appendChild(a);
          var b = document.createElement('div');
          b.innerHTML=preguntes[i].opcions[e].text;
          b.setAttribute("class","iddiv");
-         b.setAttribute("id",preguntes[i].opcions[e].resposta+" "+preguntes[i].codi);
+         b.setAttribute("id",preguntes[i].opcions[e].resposta);
+         b.setAttribute("idpreg",preguntes[i].codi);
          b.setAttribute("draggable","true");
          sec.appendChild(b);
          
@@ -190,8 +191,10 @@ contenidor.appendChild(a);
     }
     
      function entrant(e) {
-        e.preventDefault();
-        e.target.style.background = 'lightgrey';
+        if(valid == e.target.getAttribute('codipregunta')){
+            e.preventDefault();
+            e.target.style.background = 'lightgrey';
+      }
     }
     
     function sortint(e) {
@@ -201,6 +204,8 @@ contenidor.appendChild(a);
    
     
     function arrossegar(e) {
+        valid = e.target.getAttribute('idpreg');
+        e.dataTransfer.setData('IDPREG', e.target.getAttribute('idpreg'))
         e.dataTransfer.setData('Text', e.target.getAttribute('id'));
     }
    
@@ -242,10 +247,9 @@ function incorrecte(e){
     }   
      function deixarAnar(e) {
        
-        var res = e.dataTransfer.getData('Text');
-        var arraycodis = res.split(" ");
-        var codipregunta = res[2];
-        var codiresposta = res[0];
+        
+        var codipregunta = e.dataTransfer.getData('IDPREG');
+        var codiresposta = e.dataTransfer.getData('Text');
         var idboto = "boto"+codipregunta;
          
          e.target.style.background = 'white'; 
@@ -254,7 +258,7 @@ function incorrecte(e){
         destins[codipregunta].innerHTML=" ";
         e.preventDefault();
         var divres = document.createElement('div');
-        var resp = document.getElementById(res).textContent;
+        var resp = document.getElementById(codiresposta).textContent;
         divres.innerHTML = resp;
         divres.setAttribute('class','iddiv');
         destins[codipregunta].appendChild(divres);
