@@ -9,8 +9,15 @@ app.get('/', function(req, res) {
 });
 
 
-app.get('/hola', function(req, res) {
+app.get('/ClicarBoles', function(req, res) {
     res.render('a1-1-5');
+});
+app.get('/Quadrats', function(req, res) {
+    res.render('quadrats');
+});
+
+app.get('/Questions', function(req, res) {
+    res.render('Questions');
 });
 
 app.listen(port, function(){

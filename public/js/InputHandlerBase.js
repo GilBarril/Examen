@@ -46,10 +46,19 @@ InputHandlerBase.prototype._getInputCoordinates = function(e) {
  * @param e objecte event del DOM
  **/
 InputHandlerBase.prototype._onDownDomEvent = function(e) {
+    
 var coords = this._lastMoveCoordinates = this._getInputCoordinates(e);
     this.emit("down", {x: coords.x, y: coords.y, domEvent: e}); // Dispara el esdeveniment "down"
     this._stopEventIfRequired(e);
+if(e.button==2){
+    var coords = this._lastMoveCoordinates = this._getInputCoordinates(e);
+    this.emit("color", {x: coords.x, y: coords.y, domEvent: e}); // Dispara el esdeveniment "down"
+    this._stopEventIfRequired(e);
+}
+    
 };
+
+
 
 /**
  * Aquest mètode s'encarrega de controlar el moviment del ratolí o 
