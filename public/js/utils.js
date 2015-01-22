@@ -158,7 +158,7 @@ contenidor.appendChild(a);
          var b = document.createElement('div');
          b.innerHTML=preguntes[i].opcions[e].text;
          b.setAttribute("class","iddiv");
-         b.setAttribute("id",preguntes[i].opcions[e].resposta);
+         b.setAttribute("id",preguntes[i].codi+""+preguntes[i].opcions[e].resposta);
          b.setAttribute("idpreg",preguntes[i].codi);
          b.setAttribute("draggable","true");
          sec.appendChild(b);
@@ -231,7 +231,7 @@ function incorrecte(e){
        
         
         var resposta = e.target.getAttribute('resposta');
-        var pregunta = preguntes[e.target.getAttribute('pregunta')].correcte;
+        var pregunta = e.target.getAttribute('pregunta')+""+preguntes[e.target.getAttribute('pregunta')].correcte;
         
         if(resposta==pregunta){
                 
@@ -262,7 +262,7 @@ function incorrecte(e){
         divres.innerHTML = resp;
         divres.setAttribute('class','iddiv');
         destins[codipregunta].appendChild(divres);
-        e.target.innerHTML += '<button id="'+idboto+'" pregunta="'+codipregunta+'" resposta = "'+codiresposta+'" class="btn btn-info col-lg-12">Comrpoba</button>';
+        e.target.innerHTML += '<button id="'+idboto+'" pregunta="'+codipregunta+'" resposta = "'+codiresposta+'" class="btn btn-info col-lg-12">Comproba</button>';
         var boto = document.getElementById(idboto);
         boto.addEventListener('click',comprova,'false');   
        
