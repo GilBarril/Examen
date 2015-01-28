@@ -24,6 +24,11 @@ app.get('/Viatges', function(req, res) {
     res.render('viatges');
 });
 
+app.get('/ViatgesGimenez', function(req, res) {
+    res.render('ViatgesGimenez');
+});
+
+
 app.listen(port, function(){
     console.log('Tu aplicacio esta executant-se en el port: ' + port);
 });
