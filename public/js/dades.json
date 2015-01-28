@@ -1,0 +1,193 @@
+{
+    "continents": [{
+            "nom": "europa",
+            "ofertes": [{
+                "nom": "barcelona",
+                "pais": "Catalunya",
+                "preu": "535",
+                "nits": 5,
+                "divisa": "€",
+                "imatges": [
+                    "https://c4.staticflickr.com/8/7476/15975217947_3fb6782467_n.jpg",
+                    "https://c2.staticflickr.com/8/7294/16188325188_2d13b04a16_n.jpg",
+                    "https:////c3.staticflickr.com/7/6041/6302958578_9a72ee4717_n.jpg"
+                ]
+            }, {
+                "nom": "Paris",
+                "pais": "França",
+                "preu": "912",
+                "nits": 8,
+                "divisa": "€",
+                "imatges": [
+                    "https://c2.staticflickr.com/8/7331/16376852711_c74354347c_n.jpg",
+                    "https://c1.staticflickr.com/9/8586/15695609889_8a7f4f1896_n.jpg",
+                    "https://c2.staticflickr.com/4/3785/11757545283_8dd6924e62_n.jpg"
+                ]
+            }, {
+                "nom": "Londres",
+                "pais": "Anglaterra",
+                "preu": "1050",
+                "nits": 6,
+                "divisa": "€",
+                "imatges": [
+                    "https://c1.staticflickr.com/3/2828/10814529114_c0c5621089_n.jpg",
+                    "https://c2.staticflickr.com/6/5587/14942489955_db0dc2b81b_n.jpg",
+                    "https://c2.staticflickr.com/4/3676/12064626344_c955f32909_n.jpg"
+                ]
+            }, {
+                "nom": "Atenes",
+                "pais": "Grècia",
+                "preu": "1322",
+                "nits": 8,
+                "divisa": "€",
+                "imatges": [
+                    "https://c4.staticflickr.com/4/3323/3532554237_ea01b27e3d_n.jpg",
+                    "https://c2.staticflickr.com/8/7353/16179295039_e623cffdab_n.jpg",
+                    "https://c4.staticflickr.com/8/7423/15742861974_559d0425a0_n.jpg"
+                ]
+            }]
+        }, {
+            "nom": "àfrica",
+            "ofertes": [{
+                "nom": "Rabat",
+                "pais": "Marroc",
+                "preu": "870",
+                "nits": 7,
+                "divisa": "€",
+                "imatges": [
+                    "https://c2.staticflickr.com/8/7563/16255828242_cb7b89936f_n.jpg",
+                    "https://c2.staticflickr.com/8/7578/16067752107_ceebb8c74b_n.jpg",
+                    "http://c2.staticflickr.com/8/7571/16248251561_20c7c85e2a_n.jpg"
+                ]
+            }, {
+                "nom": "Pretoria",
+                "pais": "Sud-àfrica",
+                "preu": "1200",
+                "nits": 10,
+                "divisa": "€",
+                "imatges": [
+                    "https://c2.staticflickr.com/8/7482/16147792908_7870dc8160_n.jpg",
+                    "https://c2.staticflickr.com/8/7474/16230734095_1d5fb43d65_n.jpg",
+                    "https://c2.staticflickr.com/8/7522/15145189283_293d0e6a95_n.jpg"
+                ]
+            }, {
+                "nom": "El Calire",
+                "pais": "Egipte",
+                "preu": "830",
+                "nits": 7,
+                "divisa": "€",
+                "imatges": [
+                    "https://c2.staticflickr.com/4/3944/15479424707_8f84b3d881_n.jpg",
+                    "https://c2.staticflickr.com/4/3748/11996954073_4e498beb3f_n.jpg",
+                    "https://c2.staticflickr.com/6/5232/13676710133_48c0d4220a_n.jpg"
+                ]
+            }, {
+                "nom": "Tunis",
+                "pais": "Tunísia",
+                "preu": "1055",
+                "nits": 9,
+                "divisa": "€",
+                "imatges": [
+                    "https://c1.staticflickr.com/7/6039/6211562101_780fbf6336_n.jpg",
+                    "https://c1.staticflickr.com/9/8292/7712029486_fd85f443e2_n.jpg",
+                    "https://c2.staticflickr.com/8/7211/7396547918_91b7b1d508_n.jpg"
+                ]
+            }]
+        }, {
+            "nom": "amèrica",
+            "ofertes": [{
+                "nom": "Quito",
+                "pais": "Ecuador",
+                "preu": "1500",
+                "nits": 12,
+                "divisa": "€",
+                "imatges": [
+                    "https:////c3.staticflickr.com/3/2562/3802645201_baa211a90d_n.jpg",
+                    "https://c2.staticflickr.com/4/3610/3362501823_870bcb85b5_n.jpg",
+                    "https://c2.staticflickr.com/4/3146/2849370946_f154169966_n.jpg"
+                ]
+            }, {
+                "nom": "Mèxic DC",
+                "pais": "Mèxic",
+                "preu": "1350",
+                "nits": 12,
+                "divisa": "€",
+                "imatges": [
+                    "https://c2.staticflickr.com/8/7462/15386142754_b8e810aecb_n.jpg",
+                    "https://c2.staticflickr.com/8/7292/16367790012_b523d9dc1e_n.jpg",
+                    "https://c2.staticflickr.com/8/7287/15748629413_03bc3493df_n.jpg"
+                ]
+            }, {
+                "nom": "Guatemala",
+                "pais": "Guatemala",
+                "preu": "1438",
+                "nits": 15,
+                "divisa": "€",
+                "imatges": [
+                    "https://c1.staticflickr.com/9/8640/15569986583_0582d05ca6_n.jpg",
+                    "https://c2.staticflickr.com/8/7537/15916365898_e3b7cd2e79_n.jpg",
+                    "https://c2.staticflickr.com/6/5606/15792649786_b867831e8f_n.jpg"
+                ]
+            }, {
+                "nom": "Bogotà",
+                "pais": "Colòmbia",
+                "preu": "1254",
+                "nits": 12,
+                "divisa": "€",
+                "imatges": [
+                    "https://c1.staticflickr.com/9/8590/16288228876_137206683f_n.jpg",
+                    "https://c2.staticflickr.com/8/7504/16012773528_e2eba76c87_n.jpg",
+                    "https://c2.staticflickr.com/8/7524/15980561839_177d155a9e_n.jpg"
+                ]
+            }]
+        }, {
+            "nom": "àsia",
+            "ofertes": [{
+                "nom": "Hong Kong",
+                "pais": "Xina",
+                "preu": "1565",
+                "nits": 15,
+                "divisa": "€",
+                "imatges": [
+                    "https://c2.staticflickr.com/6/5465/8975237093_d3c3c8b500_n.jpg",
+                    "https://c1.staticflickr.com/9/8629/16189628460_62089a5eb4_n.jpg",
+                    "https://c2.staticflickr.com/8/7521/16281794071_94b9d192a8_n.jpg"
+                ]
+            }, {
+                "nom": "Benarés",
+                "pais": "Índia",
+                "preu": "950",
+                "nits": 12,
+                "divisa": "€",
+                "imatges": [
+                    "https://c2.staticflickr.com/8/7458/15750444103_d19af317d2_n.jpg",
+                    "https://c2.staticflickr.com/8/7329/16350094001_6e68d4bcb1_n.jpg",
+                    "https://c2.staticflickr.com/8/7572/16074488810_e96c7f7852_n.jpg"
+                ]
+            }, {
+                "nom": "Tòquio",
+                "pais": "Japó",
+                "preu": "1530",
+                "nits": 13,
+                "divisa": "€",
+                "imatges": [
+                    "https://c2.staticflickr.com/8/7442/15758816323_cc82a3a9f4_n.jpg",
+                    "https://c1.staticflickr.com/9/8660/15754765384_c889508d14_n.jpg",
+                    "https://c1.staticflickr.com/9/8583/16053395031_06676e9dd1_n.jpg"
+                ]
+            }, {
+                "nom": "Pequín",
+                "pais": "Xina",
+                "preu": "1600",
+                "nits": 15,
+                "divisa": "€",
+                "imatges": [
+                    "https://c2.staticflickr.com/8/7576/16209930685_184d745b9d_n.jpg",
+                    "https://c2.staticflickr.com/8/7550/16022576920_0840b93636_n.jpg",
+                    "https://c2.staticflickr.com/8/7374/16353461535_b669ec5caa_n.jpg" 
+                ]
+            }]
+        }
+
+    ]
+}
