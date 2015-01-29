@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <title>Ejemplo de un mapa muy simple y geolocalización - Google API v3</title>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
 var map; //importante definirla fuera de la funcion initialize() para poderla usar desde otras funciones.
- 
+var geocoder;
+var punto;
+var adreca;
+
  function initialize() {
-   var punto = new google.maps.LatLng(42.2649229, 2.9502337); //ubicación del Plaza Central de Tikal, Guatemala
+   geocoder = new google.maps.Geocoder();
+   punto = new google.maps.LatLng(42.2649229, 2.9502337); //ubicación del Plaza Central de Tikal, Guatemala
    var myOptions = {
      zoom: 12, //nivel de zoom para poder ver de cerca.
      center: punto,
@@ -21,35 +26,54 @@ var map; //importante definirla fuera de la funcion initialize() para poderla us
  //copiamos la función de geolocalización del ejemplo anterior.
   
  function pedirPosicion(pos) {
-   var centro = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
+     var myLatlng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
+     var centro = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
    map.setCenter(centro); //pedimos que centre el mapa..
-   alert("¡Hola! Estas en : "+pos.coords.latitude+ ","+pos.coords.longitude+" Rango de localización de +/- "+pos.coords.accuracy+" metros");
-   var myLatlng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
+    
    var marker = new google.maps.Marker({
    position: myLatlng,
+   
    }); 
    
      marker.setMap(map);
      
+     
+    geocoder.geocode({'latLng': myLatlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        
+         adreca = results[1].formatted_address;
+         
+        
+      } else {
+        alert("Geocoder failed due to: " + status);
+      }
+    
+    });
+   
+    
 }
  
 function geolocalizame(){
 navigator.geolocation.getCurrentPosition(pedirPosicion);
  }
   
-/*function guardarImatge(){
-    var fotonova = document.createElement('div');
-    fotonova.innerHTML = "
+function guardarImatge(){
+    var fotonova = document.createElement('li');
+    fotonova.setAttribute('style','width:320px');
+    fotonova.setAttribute('class','list-group-item');
+    document.body.appendChild(fotonova);
+    
+    fotonova.innerHTML = "<span class='glyphicon glyphicon-picture'> " +adreca;
 
-} */   
+}    
     
     
 </script>
 </head>
 <body onload="initialize()"> 
- <div id="map_canvas" style="width:310px ;height:370px"></div>
- <p>Capture Image: <input type="file" accept="image/*;capture=camera"><br/>
- <button id="local" onclick="geolocalizame()">Localitza'm</button>
- <!--<button id="save" onclick="geolocalizame()">Guardar</button>!-->
+ <div id="map_canvas" style="width:310px ;height:370px;border:2px solid brown;"></div>
+ <!--<p><input type="file" accept="image/*;capture=camera"><br/>!--><br/>
+ <button class="btn btn-warning" style="width:310px" id="local" onclick="geolocalizame()">LOCALITZA'M</button>
+ <!--<button class="btn btn-primary" id="save" onclick="guardarImatge()">Guardar</button>!-->
 </body>
 </html> 
