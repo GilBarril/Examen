@@ -23,7 +23,7 @@ var map; //importante definirla fuera de la funcion initialize() para poderla us
  function pedirPosicion(pos) {
    var centro = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
    map.setCenter(centro); //pedimos que centre el mapa..
-   alert("¡Hola! Estas en : "+pos.coords.latitude+ ","+pos.coords.longitude+" Rango de localización de +/- "+pos.coords.accuracy+" metros");
+   //alert("¡Hola! Estas en : "+pos.coords.latitude+ ","+pos.coords.longitude+" Rango de localización de +/- "+pos.coords.accuracy+" metros");
    var myLatlng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
    var marker = new google.maps.Marker({
    position: myLatlng,
@@ -41,7 +41,7 @@ navigator.geolocation.getCurrentPosition(pedirPosicion);
 </head>
 <body onload="initialize()"> 
  <div id="map_canvas" style="width:310px ;height:370px"></div>
- <p>Capture Image: <input type="file" accept="image/*" id="capture" capture="camera"><br/>
+ <p>Capture Image: <input type="file" accept="image/*;capture=camera"><br/>
  <button id="save" onclick="geolocalizame()">Guardar</button> 
 </body>
 </html> 
