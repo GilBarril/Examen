@@ -1,4 +1,5 @@
 $(document).ready(function() {
+      $('#tabs').tab();
       var seccions = ['div','div','div','div','ul',['li','li','li']];
       var llista = ['nomcity','preu','btn'];
     
@@ -9,7 +10,7 @@ $(document).ready(function() {
                divconta.setAttribute('id','myTabContent');
               
               $(jd.continents).each(function(i,d) {
-                  $('#menu').append('<li><a href="#" id="'+ d.nom +'"> ' + d.nom + '</a></li>');
+                  $('#menu').append('<li><a href="#" id="'+ d.nom +'" data-toggle="tab"> ' + d.nom + '</a></li>');
                          
                       var divprimer = document.createElement(seccions[0]);
                       divconta.appendChild(divprimer);
