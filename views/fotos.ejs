@@ -9,11 +9,11 @@
 var map; //importante definirla fuera de la funcion initialize() para poderla usar desde otras funciones.
  
  function initialize() {
-   var punto = new google.maps.LatLng(17.22207, -89.6235); //ubicación del Plaza Central de Tikal, Guatemala
+   var punto = new google.maps.LatLng(42.2649229, 2.9502337); //ubicación del Plaza Central de Tikal, Guatemala
    var myOptions = {
-     zoom: 18, //nivel de zoom para poder ver de cerca.
+     zoom: 12, //nivel de zoom para poder ver de cerca.
      center: punto,
-     mapTypeId: google.maps.MapTypeId.SATELLITE //Tipo de mapa inicial, satélite para ver las pirámides
+     mapTypeId: google.maps.MapTypeId.ROADMAP  //Tipo de mapa inicial, satélite para ver las pirámides
    }
      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
  }
@@ -37,7 +37,7 @@ navigator.geolocation.getCurrentPosition(pedirPosicion);
 </head>
 <body onload="initialize()"> 
  <div id="map_canvas" style="width:340px ;height:480px"></div>
- <p>Capture Image: <input type="file" accept="image/*" id="capture" capture="camera">
+ <p>Capture Image: <input type="file" accept="image/*" id="capture" capture="camera"><br/>
  <button id="save" onclick="geolocalizame()">Guardar</button> 
 </body>
 </html> 
