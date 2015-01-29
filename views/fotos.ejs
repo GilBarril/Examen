@@ -42,7 +42,7 @@ var adreca;
       if (status == google.maps.GeocoderStatus.OK) {
         
          adreca = results[1].formatted_address;
-         
+         guardarImatge();
         
       } else {
         alert("Geocoder failed due to: " + status);
