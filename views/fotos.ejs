@@ -24,9 +24,13 @@ var map; //importante definirla fuera de la funcion initialize() para poderla us
    var centro = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
    map.setCenter(centro); //pedimos que centre el mapa..
    alert("¡Hola! Estas en : "+pos.coords.latitude+ ","+pos.coords.longitude+" Rango de localización de +/- "+pos.coords.accuracy+" metros");
-   var point = new GPoint (pos.coords.latitude,pos.coords.longitude);
-   var marker = new GMarker(point);
-   map.addOverlay(marker); 
+   var myLatlng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
+   var marker = new google.maps.Marker({
+   position: myLatlng,
+   }); 
+   
+     marker.setMap(map);
+     
 }
  
 function geolocalizame(){
