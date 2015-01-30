@@ -18,8 +18,8 @@ $(document).ready(function() {
                       var a = $('<div class="content col-xs-10"></div>');
                       var inici = $('<div class="inici col-xs-10"><h1>Benvinguts a Viatges Gil</h1></div>');
                       $('.container').append(a);
-            $('.container').append(Lloguer);
-            $('.container').append(inici);
+                      $('.container').append(Lloguer);
+                      $('.container').append(inici);
                       
                   });
                    
@@ -84,9 +84,6 @@ $(document).ready(function() {
                       });  
                     });
                   });             
-                });
-});            
-              });             
                 });
 });            
       
