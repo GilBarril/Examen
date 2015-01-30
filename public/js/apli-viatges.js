@@ -24,11 +24,13 @@ $(document).ready(function() {
                   });
                    
                   $("#" + d.nom).on('click',function(){
+                      var im = $('<div class="imgs col-xs-9" style="margin-top:30px;"></div>');
                       
                       $('.content').html(" ");
+                      $('.imgs').html(" ");
                       $('.inici').html(" ");
                         
-                        var im = $('<div class="imgs col-xs-9" style="margin-top:30px;"></div>');
+                        
                       
                      
                       $('.container').append(im);
@@ -82,6 +84,9 @@ $(document).ready(function() {
                       });  
                     });
                   });             
+                });
+});            
+              });             
                 });
 });            
       
