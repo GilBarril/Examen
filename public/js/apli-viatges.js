@@ -14,8 +14,12 @@ $(document).ready(function() {
                   
                   $('#inici').on('click',function(){
                       $('.container').html(" ");
+                      var Lloguer = $('<div class="llistadereserves"><div class="col-xs-offset-10">Heu Reservat:</div></div>');
+                      var a = $('<div class="content col-xs-10"></div>');
                       var inici = $('<div class="inici col-xs-10"><h1>Benvinguts a Viatges Gil</h1></div>');
-                      $('.container').append(inici);
+                      $('.container').append(a);
+            $('.container').append(Lloguer);
+            $('.container').append(inici);
                       
                   });
                    
