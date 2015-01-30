@@ -1,53 +1,77 @@
 $(document).ready(function() {
      
-      var seccions = ['div','div','div','div','ul',['li','li','li']];
-      var llista = ['nomcity','preu','btn'];
-    
-          $.getJSON('js/dades.json', function(jd) {
-              
-               divconta = document.createElement('div');
-              // divconta.setAttribute('class','tab-content');
-               divconta.setAttribute('id','my');
-              
-              $(jd.continents).each(function(i,d) {
+        $.getJSON('js/dades.json', function(jd) {
+            
+            var Lloguer = $('<div class="llistadereserves"><div class="col-xs-offset-10">Heu Reservat:</div></div>');
+            var a = $('<div class="content col-xs-10"></div>');
+            var inici = $('<div class="inici col-xs-10"><h1>Benvinguts a Viatges Gil</h1></div>');
+            $('.container').append(a);
+            $('.container').append(Lloguer);
+            $('.container').append(inici);
+            
+          $(jd.continents).each(function(i,d) {
                   $('#menu').append('<li><a href="#" id="'+ d.nom +'" > ' + d.nom + '</a></li>');
+                  
+                   
                   $("#" + d.nom).on('click',function(){
-                      $('#my').html(" ");
-                      var divprimer = document.createElement(seccions[0]);
-                      divconta.appendChild(divprimer);
-                      for(var contcity=0;contcity<d.ofertes.length;contcity++){ 
-                      //divprimer.setAttribute('class','tab-pane fade');
-                      //divprimer.setAttribute('id',d.nom);
-                      var co = document.getElementsByClassName('container');
-                      co[0].appendChild(divconta);
-                      var divanterior= divprimer;
+                      
+                      $('.content').html(" ");
+                      $('.inici').html(" ");
+                        
+                        var im = $('<div class="imgs col-xs-9" style="margin-top:30px;"></div>');
+                      
                      
-                      for(var e=1;e<seccions.length;e++){
-
-                          if(Array.isArray(seccions[e])){
-                            for (var cont=0;cont<seccions[e].length; cont ++){
-
-                                var a = document.createElement(seccions[e][cont]);
-                                a.setAttribute('class',llista[cont]);
-                                a.innerHTML = d.ofertes[0].nom;
-                                divanterior.appendChild(a);   
-                            }
-
-                          }
-                            else{
-                                var a = document.createElement(seccions[e]);   
-                                divanterior.appendChild(a);
-                                divanterior = a;
-                            }
-
-                       } 
-                  }
+                      $('.container').append(im);
                       
-                      
-                  });
-                      
-              });
-              
-              
-          });    
-});
+                      $(d.ofertes).each(function(i,d){
+                          
+                           var b =$('<div class="principal'+i+' '+'text-center row col-xs-5 col-xs-offset-1"><div class="text-center row col-xs-12 city'+i+'"></div><div class="text-center row col-xs-12 preu'+i+'"></div><div class="row col-xs-12 btn'+i+' btn-success"></div></div>');
+
+                           $('.content').append(b);
+
+                          // $('li').setAttribute('style','list-style:none');  
+                           $('.city'+i).html(d.nom+"("+d.pais+")"); 
+                           $('.preu'+i).append('<span>'+ d.preu +' '+ d.divisa+' '+'per'+' '+d.nits+' '+'nits'+'</span>'); 
+                           $('.btn'+i).html("RSERVA");
+                          
+                       $('.principal'+i).mouseover(function(){
+                           
+                          $('.imgs').html(" ");
+                          $(d.imatges).each(function(i,d){
+                              
+                              var im =$('<div class="col-xs-3"><img src="'+d+'"</div>');
+                              $('.imgs').append(im);
+                              
+                          });  
+                          $('.principal'+i).mouseout(function(){
+                              
+                              $('.imgs').html(" ");
+                              
+                          });
+                       
+                       $('.btn'+i).on('click',function(){
+                           
+                           var preunou = d.preu * 0.85;
+                           var boto = $('.btn'+i);
+                           boto.html(" ");
+                           boto.append('<div><strong>RESERVAT</strong><span class="glyphicon glyphicon-ok-circle"></span></div>');
+                           boto.removeClass('btn'+i);
+                           boto.removeClass('btn-success');
+                                                      
+                           $('.preu'+i).html(" ");                           
+                           $('.preu'+i).append('<span>'+ preunou +' '+ d.divisa+' '+'per'+' '+d.nits+' '+'nits'+'</span>');
+                           
+                          
+                           var Llistalloguer = $('<div class="col-xs-offset-10">'+d.nom+' '+'per'+' '+d.nits+' '+'nits'+'</div>');
+                           
+                           $('.llistadereserves').append(Llistalloguer);
+                           
+                       });
+                           
+                       });
+                      });  
+                    });
+                  });             
+                });
+});            
+      

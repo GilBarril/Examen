@@ -2,6 +2,10 @@
 <html>
 <head>
 <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../js/ammap/ammap.css">    
+<script type="text/javascript" src="../js/ammap/ammap.js"></script>
+<script type="text/javascript" src="../js/ammap/maps/js/worldLow.js"></script>
+    
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <title>Ejemplo de un mapa muy simple y geolocalización - Google API v3</title>
@@ -11,8 +15,24 @@ var map; //importante definirla fuera de la funcion initialize() para poderla us
 var geocoder;
 var punto;
 var adreca;
+var localitzador;
+var arraypunts = [""];
 
- function initialize() {
+   /* [{
+			svgPath: targetSVG,
+			zoomLevel: 5,
+			scale: 0.5,
+			title: "Vienna",
+			latitude: 48.2092,
+			longitude: 16.3728
+		}]*/
+    
+ function localitza(e){
+     localitzador = e;
+ }   
+    
+geocoder = new google.maps.Geocoder();
+/* function initialize() {
    geocoder = new google.maps.Geocoder();
    punto = new google.maps.LatLng(42.2649229, 2.9502337); //ubicación del Plaza Central de Tikal, Guatemala
    var myOptions = {
@@ -21,27 +41,79 @@ var adreca;
      mapTypeId: google.maps.MapTypeId.ROADMAP  //Tipo de mapa inicial, satélite para ver las pirámides
    }
      map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
- }
+ }*/
+    
+    
+    
+    
+  
+function inici(){    
+    // svg path for target icon
+var targetSVG = "M9,0C4.029,0,0,4.029,0,9s4.029,9,9,9s9-4.029,9-9S13.971,0,9,0z M9,15.93 c-3.83,0-6.93-3.1-6.93-6.93S5.17,2.07,9,2.07s6.93,3.1,6.93,6.93S12.83,15.93,9,15.93 M12.5,9c0,1.933-1.567,3.5-3.5,3.5S5.5,10.933,5.5,9S7.067,5.5,9,5.5 S12.5,7.067,12.5,9z";
+
+    map = AmCharts.makeChart("mapdiv", {
+	type: "map",
+	pathToImages: "../js/ammap/images/",
+
+	imagesSettings: {
+		rollOverColor: "#CC0000",
+		rollOverScale: 3,
+		selectedScale: 3,
+		selectedColor: "#CC0000"
+	},
+
+	dataProvider: {
+		map: "worldLow",
+		images:[{
+			svgPath: targetSVG,
+			zoomLevel: 5,
+			scale: 0.5,
+			title: "Vienna",
+			latitude: 48.2092,
+			longitude: 16.3728
+		}]
+	},
+
+	objectList: {
+		container: "listdiv"
+	},
+	showImagesInList: true
+});
+    
+   
+    
+}   
+    
+    
+    
+    
+    
   
  //copiamos la función de geolocalización del ejemplo anterior.
   
  function pedirPosicion(pos) {
      var myLatlng = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
      var centro = new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
-   map.setCenter(centro); //pedimos que centre el mapa..
+     //map.setCenter(centro); //pedimos que centre el mapa..
     
-   var marker = new google.maps.Marker({
+  /* var marker = new google.maps.Marker({
    position: myLatlng,
    
    }); 
    
      marker.setMap(map);
+     */
      
+    
      
     geocoder.geocode({'latLng': myLatlng}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        
+        if(localitzador==0){
          adreca = results[1].formatted_address;
+        }
+          if(localitzador==1){
+             adreca = results[0].formatted_address; 
+          }
          guardarImatge();
         
       } else {
@@ -49,17 +121,19 @@ var adreca;
       }
     
     });
-   
-    
+ arraypunts.push("{svgPath: targetSVG,zoomLevel: 5,scale: 0.5,title:"+adreca+",latitude: "+pos.coords.latitude+",longitude: "+pos.coords.longitude+"}")
+     
+   inici(); 
 }
  
-function geolocalizame(){
+function geolocalizame(r){
+localitza(r);
 navigator.geolocation.getCurrentPosition(pedirPosicion);
  }
   
 function guardarImatge(){
     var fotonova = document.createElement('li');
-    fotonova.setAttribute('style','width:315px');
+    fotonova.setAttribute('style','width:625px');
     fotonova.setAttribute('class','list-group-item');
     document.body.appendChild(fotonova);
     
@@ -67,13 +141,22 @@ function guardarImatge(){
 
 }    
     
-    
+
+
 </script>
 </head>
-<body onload="initialize()"> 
- <div id="map_canvas" style="width:315px ;height:370px;border:2px solid brown;"></div>
+<body onload="inici()"> <!--onload="initialize()"!-->
+    
+ <div>
+        <div id="listdiv" style="width:200px; overflow:auto; height:500px; float:right; background-color:#EEEEEE;"></div>
+        <div id="mapdiv" style="margin-right:200px; background-color:#EEEEEE; height: 500px;"></div>
+ </div>   
+    
+ <!--<div id="map_canvas" style="width:315px ;height:370px;border:2px solid brown;"></div>!-->
  <!--<p><input type="file" accept="image/*;capture=camera"><br/>!--><br/>
- <button class="btn btn-warning" style="width:310px" id="local" onclick="geolocalizame()">LOCALITZA'M</button>
+ <button class="btn btn-warning" style="width:310px" id="local" onclick="geolocalizame(0)">LOCALITZA'M</button>
+ <button class="btn btn-warning" style="width:310px" id="local" onclick="geolocalizame(1)">LOCALITZA'M MÉS</button>
+    
  <!--<button class="btn btn-primary" id="save" onclick="guardarImatge()">Guardar</button>!-->
 </body>
 </html> 
