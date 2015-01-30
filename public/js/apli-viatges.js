@@ -12,6 +12,12 @@ $(document).ready(function() {
           $(jd.continents).each(function(i,d) {
                   $('#menu').append('<li><a href="#" id="'+ d.nom +'" > ' + d.nom + '</a></li>');
                   
+                  $('#inici').on('click',function(){
+                      $('.container').html(" ");
+                      var inici = $('<div class="inici col-xs-10"><h1>Benvinguts a Viatges Gil</h1></div>');
+                      $('.container').append(inici);
+                      
+                  });
                    
                   $("#" + d.nom).on('click',function(){
                       
