@@ -24,10 +24,12 @@ $(document).ready(function() {
                   });
                    
                   $("#" + d.nom).on('click',function(){
+                      
+                       $('.imgs').remove();
                       var im = $('<div class="imgs col-xs-9" style="margin-top:30px;"></div>');
                       
                       $('.content').html(" ");
-                      $('.imgs').html(" ");
+                     
                       $('.inici').html(" ");
                         
                         
