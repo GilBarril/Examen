@@ -32,6 +32,9 @@ app.get('/Fotos', function(req, res) {
     res.render('fotos');
 });
 
+app.get('/Fotos-Google', function(req, res) {
+    res.render('fotos-google');
+});
 
 app.listen(port, function(){
     console.log('Tu aplicacio esta executant-se en el port: ' + port);
