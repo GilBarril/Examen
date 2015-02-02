@@ -36,6 +36,10 @@ app.get('/Fotos-Google', function(req, res) {
     res.render('fotos-google');
 });
 
+app.get('/receptes', function(req, res) {
+    res.render('receptes');
+});
+
 app.listen(port, function(){
     console.log('Tu aplicacio esta executant-se en el port: ' + port);
 });

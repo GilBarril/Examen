@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ca">
+<head>
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>    
+    
+ <body ng-app="app">
+ <script>
+ 
+     var app = angular.module("app",[]);
+     app.controller('ReceptesController',function($scope){
+         
+         
+         $scope.receptes = [{
+             
+             titol:"Truita de patates",
+             explicacio:"trenques els ous, els bats, fas les patates i ho ajuntes",
+             ingredients:"patates,ous,ceba",
+    
+         },]
+         
+         
+         $scope.afegirrecepta = function(){
+             $scope.receptes.unshift({
+               titol:$scope.titolrecepta,
+               explicacio:$scope.explicaciorecepta,
+               ingredients:$scope.ingredientsrecepta,
+                 
+             })
+         }
+         
+         
+         
+         
+     });
+ </script> 
+     
+ <dv class="text-center"><h1>LES MEVES RECEPTES DE CUINA</h1></dv>
+ <div class="container ">
+     <div class="row col-xs-9">
+         <h1>LLISTA DE RECEPTES</h1>
+     </div>
+     <div class="row col-xs-3">
+         <h2>NOVA RECEPTA</h2>
+     </div>
+  <div  class="row" ng-controller="ReceptesController">
+      <div class="row col-xs-8 " >
+     <div class="list-group-item" ng-repeat="recepta in receptes" >
+         
+         <p><strong>{{recepta.titol}}</strong></p>
+         <p>{{recepta.explicacio}}</p>
+         <p>{{recepta.ingredients}}</p>
+      </div>
+      </div>
+     <div class="row col-xs-3  col-xs-offset-1" >
+     
+      <div class="row">
+          <input ng-model="titolrecepta" class="form-control">
+         </div>
+      <div class="row">
+          <textarea ng-model="explicaciorecepta" class="form-control"></textarea>
+         </div>
+      <div class="row">
+          
+          <input ng-model="ingredientsrecepta" class="form-control">
+         </div>
+  <div class="row">
+      <button ng-click="afegirrecepta()" class="btn btn-default">
+       Afegir Recepta
+     </button>
+         </div> 
+  </div>
+     
+ </div> 
+ </div> 
+     
+   
+     
+ </body>
+    
+    
+</html>
