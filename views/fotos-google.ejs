@@ -1,6 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+    
+    
+body{padding-left:18px;}    
+    
+div#foto1 {
+    margin-top:30px;
+    width: 315px;
+    height: 33px;
+    overflow: hidden;
+    position:relative;
+    padding:0;
+    
+}
+    
+div#foto1 #captur{
+   
+    margin-top:-30px;
+    width:315px;
+    text-align:center;
+    overflow: hidden;
+    padding-top:3px;
+    z-index:1;
+}
+
+div#foto1 input {
+    
+    display: block !important;
+    width: 315px !important;
+    height: 33px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    z-index:3;
+    
+}    
+    
+div#form_show {
+    
+    position:absolute;
+    width:280px;
+    top:50px;
+    left:33px;
+    background-color:#337ab7;
+    z-index:5;
+    margin:0 auto;
+    padding:20px 20px;
+    border-radius:5px;
+    box-shadow: 10px 10px 5px #888888;
+    
+}    
+    
+.formu{
+    margin:5px 0 5px 0;
+   
+}   
+ 
+    
+#cap{
+    width:239px;
+}
+    
+#borr{
+    margin-top:5px;
+    width:239px;
+}   
+    
+</style>   
+
 <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="../js/ammap/ammap.css">    
 <script type="text/javascript" src="../js/ammap/ammap.js"></script>
@@ -19,8 +87,10 @@ var infowindow;
 var localitzador;
 var arraypunts = [""];
 var contentString;
-var urlimatge
-
+var urlimatge;
+var URL;
+var imgURL;
+var titolImatge;
   
  function localitza(e,i){
      localitzador = e;
@@ -70,13 +140,14 @@ geocoder = new google.maps.Geocoder();
           if(localitzador==1){
              adreca = results[0].formatted_address; 
           }
-         contentString = adreca+'<img src="'+urlimatge+'"/>';
+         contentString = '<p><img width="150px" src="'+urlimatge+'"/><p><p style="color:grey"><strong>'+titolImatge+'</strong></p><p>'+adreca+'</p>';
+         
          infowindow = new google.maps.InfoWindow({
             content: contentString
          });
           
          infowindow.open(map,marker);
-          
+         
           
          google.maps.event.addListener(marker, 'click', function() {
               
@@ -84,7 +155,7 @@ geocoder = new google.maps.Geocoder();
          }); 
           
           
-         guardarImatge();
+        // guardarImatge();
         
       } else {
         alert("Geocoder failed due to: " + status);
@@ -103,7 +174,7 @@ navigator.geolocation.getCurrentPosition(pedirPosicion);
   
 function guardarImatge(){
     var fotonova = document.createElement('li');
-    fotonova.setAttribute('style','width:625px');
+    fotonova.setAttribute('style','width:315px');
     fotonova.setAttribute('class','list-group-item');
     document.body.appendChild(fotonova);
     
@@ -113,18 +184,74 @@ function guardarImatge(){
     
 
 function captura(){
+    titolImatge = document.getElementById('titolimatge').value;
+    document.body.removeChild(document.getElementById('form_show'));
     
-    var imatge = document.getElementById('foto');
-    if(imatge.files.length>0){
-        
-        var imgURL = URL.createObjectURL(imatge.files[0]);
          
         geolocalizame(0,imgURL);
         
-    }
+       
     
 }    
     
+    
+ function form_show(){
+     
+    var imatge = document.getElementById('foto');
+    if(imatge.files.length>0){
+        
+        URL = window.URL || window.webkitURL
+        
+        imgURL = URL.createObjectURL(imatge.files[0]);
+         
+        
+        
+       
+    }
+     
+     
+     var a = document.createElement('div');
+     a.setAttribute('id','form_show');
+     a.setAttribute('class','form-group');
+     var tit = document.createElement('p');
+     tit.innerHTML = "<span style='color:white'>WILD<strong>FLASH</strong></span> <img src='../js/ammap/images/wildflash-icon-1.png'/>";
+     tit.setAttribute('style','text-align:center');
+     var imatge_show = document.createElement('img');
+     imatge_show.setAttribute('src',imgURL);
+     imatge_show.setAttribute('width','239px');
+     var b = document.createElement('input');
+     b.setAttribute('type','text');
+     b.setAttribute('placeholder','Títol Imatge');
+     b.setAttribute('id','titolimatge');
+     b.setAttribute('class','form-control formu');
+     var c = document.createElement('button');
+     c.setAttribute('id','cap');
+     c.setAttribute('onclick','captura()');
+     c.setAttribute('class','btn btn-success');
+     c.innerHTML="Guardar <span class='glyphicon glyphicon-floppy-disk'></span>";
+     var d = document.createElement('button');
+     d.setAttribute('id','borr');
+     d.setAttribute('onclick','borrarImatge()');
+     d.setAttribute('class','btn btn-danger');
+     d.innerHTML="Cancelar <span class='glyphicon glyphicon-remove-circle'></span>";
+     
+     a.appendChild(tit);
+     a.appendChild(imatge_show);
+     a.appendChild(b);
+     a.appendChild(c);
+     a.appendChild(d);
+     
+     document.body.appendChild(a);
+     
+     
+     
+     
+ }   
+ 
+ function borrarImatge(){
+     document.body.removeChild(document.getElementById('form_show'));
+     
+ }   
     
 
 </script>
@@ -132,10 +259,18 @@ function captura(){
 <body onload="initialize()">
      
     
-<div id="map_canvas" style="width:315px ;height:370px;border:2px solid brown;"></div>
- <input id="foto" type="file" accept="image/*;capture=camera"><br/><br />
- <button class="btn btn-primary" style="width:310px" id="local" onclick="captura()">CAPTURA <span class="glyphicon glyphicon-camera"></span></button><br/><br/> 
- <button class="btn btn-warning" style="width:310px" id="local" onclick="geolocalizame(0)">LOCALITZA'M</button><br/><br/> 
- <button class="btn btn-danger" style="width:310px" id="local" onclick="geolocalizame(1)">LOCALITZA'M MÉS</button>
+<div id="map_canvas" style="width:315px ;height:370px;border:3px solid #337ab7;"></div>
+ <div id="foto1" class="btn btn-primary">
+     <input id="foto" type="file" onchange="form_show()" accept="image/*;capture=camera" >
+     <p id="captur">CAPTURA <span class="glyphicon glyphicon-camera"></span></p>
+</div>
+ 
+
 </body>
+    
+  
+    
+    
+    
+    
 </html> 
