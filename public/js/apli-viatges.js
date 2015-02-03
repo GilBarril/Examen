@@ -63,8 +63,9 @@ $(document).ready(function() {
                               
                           });
                        
-                       $('.btn'+i).on('click',function(){
-                           
+                       $('.btn'+i).on('click',function(e){
+                           e.preventDefault();
+                           e.stopPropagation();
                            var preunou = d.preu * 0.85;
                            var boto = $('.btn'+i);
                            boto.html(" ");
