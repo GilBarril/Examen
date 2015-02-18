@@ -1,7 +1,7 @@
 $(document).ready(function() {
      
         $.getJSON('js/dades.json', function(jd) {
-            
+            var llistalloguer = [];
             var Lloguer = $('<div class="llistadereserves"><div class="col-xs-offset-10">Heu Reservat:</div></div>');
             var a = $('<div class="content col-xs-10"></div>');
             var inici = $('<div class="inici col-xs-10"><h1>Benvinguts a Viatges Gil</h1></div>');
@@ -43,7 +43,7 @@ $(document).ready(function() {
 
                            $('.content').append(b);
 
-                          // $('li').setAttribute('style','list-style:none');  
+                          
                            $('.city'+i).html(d.nom+"("+d.pais+")"); 
                            $('.preu'+i).append('<span>'+ d.preu +' '+ d.divisa+' '+'per'+' '+d.nits+' '+'nits'+'</span>'); 
                            $('.btn'+i).html("RSERVA");
@@ -66,6 +66,8 @@ $(document).ready(function() {
                        $('.btn'+i).on('click',function(e){
                            e.preventDefault();
                            e.stopPropagation();
+                           llistalloguer.push("<div class='col-xs-offset-10'>"+d.nom+" per "+d.nits+" nits</div>");
+                           
                            var preunou = d.preu * 0.85;
                            var boto = $('.btn'+i);
                            boto.html(" ");
@@ -75,11 +77,15 @@ $(document).ready(function() {
                                                       
                            $('.preu'+i).html(" ");                           
                            $('.preu'+i).append('<span>'+ preunou +' '+ d.divisa+' '+'per'+' '+d.nits+' '+'nits'+'</span>');
-                           
                           
-                           var Llistalloguer = $('<div class="col-xs-offset-10">'+d.nom+' '+'per'+' '+d.nits+' '+'nits'+'</div>');
+                           $('.llistadereserves').html(" ");
+                           for (var reserva in llistalloguer) {
+                               console.log(reserva);
+                               var Llistalloguer = $(llistalloguer[reserva]);
+                               $('.llistadereserves').append(Llistalloguer);
+                           }
+                          
                            
-                           $('.llistadereserves').append(Llistalloguer);
                            
                        });
                            
