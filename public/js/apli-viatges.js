@@ -2,7 +2,7 @@ $(document).ready(function() {
      
         $.getJSON('js/dades.json', function(jd) {
             var llistalloguer = [];
-            var Lloguer = $('<div class="llistadereserves"><div class="col-xs-offset-10">Heu Reservat:</div></div>');
+            var Lloguer = $('<div class="col-xs-offset-10"><div >Heu Reservat:</div><div class="llistadereserves"></div></div>');
             var a = $('<div class="content col-xs-10"></div>');
             var inici = $('<div class="inici col-xs-10"><h1>Benvinguts a Viatges Gil</h1></div>');
             $('.container').append(a);
@@ -63,10 +63,9 @@ $(document).ready(function() {
                               
                           });
                        
-                       $('.btn'+i).on('click',function(e){
-                           e.preventDefault();
-                           e.stopPropagation();
-                           llistalloguer.push("<div class='col-xs-offset-10'>"+d.nom+" per "+d.nits+" nits</div>");
+                       $('.btn'+i).click(function(e){
+                         
+                           llistalloguer.push("<div>"+d.nom+" per "+d.nits+" nits</div>");
                            
                            var preunou = d.preu * 0.85;
                            var boto = $('.btn'+i);
@@ -81,11 +80,11 @@ $(document).ready(function() {
                            $('.llistadereserves').html(" ");
                            for (var reserva in llistalloguer) {
                                console.log(reserva);
-                               var Llistalloguer = $(llistalloguer[reserva]);
-                               $('.llistadereserves').append(Llistalloguer);
+                               var Llistlloguer = $(llistalloguer[reserva]);
+                               $('.llistadereserves').append(Llistlloguer);
                            }
                           
-                           
+                           e.die();
                            
                        });
                            
