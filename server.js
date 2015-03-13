@@ -13,7 +13,8 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 8080;
 
 app.use("/api/productes",require("./controllers/api/producte"));
-//app.use("/",require("./controllers/static"));
+
+app.use("/",require("./controllers/static"));
 
 var options = {
     root: __dirname + "/layouts"
