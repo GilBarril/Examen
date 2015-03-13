@@ -2,7 +2,7 @@ var Producte = require("../../models/producte");
 var router = require("express").Router();
 
 router.get("/:id", function (req,res,next) {
-    Producte.find({nom: req.params.id}, function(err,producte) {
+    Producte.find({codi: req.params.id}, function(err,producte) {
         if (err) {
             return next(err);
         }
@@ -11,8 +11,32 @@ router.get("/:id", function (req,res,next) {
    
 });
 
+/*Les cerques secció i preu funcionen bé*/
+
+router.get("/seccio/:seccio", function (req,res,next) {
+    Producte.find({seccio: req.params.seccio}, function(err,productes) {
+        if (err) {
+            return next(err);
+        }
+        res.json(productes);
+    });
+   
+});
+
+
+router.get("/preu/:preu", function (req,res,next) {
+    Producte.find({preu: req.params.preu}, function(err,productes) {
+        if (err) {
+            return next(err);
+        }
+        res.json(productes);
+    });
+   
+});
+
+
 router.get("/", function(req, res, next) {
-    Producte.find().sort('-date').exec(function(err, productes) {
+    Producte.find(function(err, productes) {
         if (err) {
             return next(err);
         }
@@ -24,9 +48,10 @@ router.get("/", function(req, res, next) {
 
 router.post("/", function (req,res,next) {
     var producte = new Producte({
+        codi: req.body.codi,
         nom: req.body.nom,
+        seccio: req.body.seccio,
         preu: req.body.preu,
-        existencies : req.body.existencies,
         });
     producte.save(function(err, producte) {
         if (err) { return next(err) }
@@ -38,12 +63,12 @@ router.post("/", function (req,res,next) {
 router.put( "/:id", function( req, res, next ) {
    
     
-    Producte.find({"nom": req.params.id} , function(err, producte) {
+    Producte.find({"codi": req.params.id} , function(err, producte) {
         console.log(producte);
         if (err) return next(err);
         Producte.findByIdAndUpdate(producte[0]._id, req.body, function(err) {
             if (err) return next(err);
-            console.log('patata')
+          
             res.status(201).json({"missatge" :"producte modificat"});
         });
                 });
@@ -52,7 +77,7 @@ router.put( "/:id", function( req, res, next ) {
 
 router.delete( "/:id", function( req, res, next ) {
     
-   Producte.remove({"nom":req.params.id}, function( err) {
+   Producte.remove({"codi":req.params.id}, function( err) {
        if(err){
            return next(err);
        } 

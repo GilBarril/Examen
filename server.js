@@ -13,15 +13,21 @@ app.use(bodyParser.json());
 var port = process.env.PORT || 8080;
 
 app.use("/api/productes",require("./controllers/api/producte"));
-
 app.use("/",require("./controllers/static"));
 
 var options = {
     root: __dirname + "/layouts"
 };
 
-/* aqui especifiques el layout que en aquest cas és examen.html*/
 app.get('/',function(req, res){
+    res.sendFile("producte.html",options);
+});
+
+app.get('/seccio/:seccio',function(req, res){
+    res.sendFile("producte.html",options);
+});
+
+app.get('/preu/:preu',function(req, res){
     res.sendFile("producte.html",options);
 });
 

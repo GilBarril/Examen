@@ -17,9 +17,10 @@
         <div class="col-xs-6">
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="producte in productes">
-                    <p class="titol"><i>Nom:</i> <strong> {{producte.nom}}</strong></p>
-                    <p><i>Preu:</i> {{producte.preu}} <span class="glyphicon glyphicon-euro"></span></p>
-                    <p><i>Existencies:</i> {{producte.existencies}}</p>
+                    <p class="titol"><i>Codi:</i> <strong> {{producte.codi}}</strong></p>
+                    <p><i>Nom:</i> {{producte.nom}}</p>
+                    <p><i>Seccio:</i> {{producte.seccio}}</p>
+                    <p><i>Preu:</i> {{producte.preu}} <span class="glyphicon glyphicon-euro"></span></p>                  
                     <button class="btn btn-info" ng-click="editarproducte(producte)">
                         Modifica <span class="glyphicon glyphicon-edit"></span>
                     </button>
@@ -34,13 +35,10 @@
             <form>
                 <div>
                     <span><strong>Afegir Producte</strong></span>
+                    <input ng-model="codi" placeholder="Codi"/>
                     <input ng-model="nom" placeholder="Nom"/>
-                    
+                    <input ng-model="seccio" placeholder="Seccio"/>
                     <input ng-model="preu" placeholder="Preu"/>
-                    
-                    <input ng-model="existencies" placeholder="Existencies"/>
-
-
                     <br>
                     <button class="btn btn-default " ng-click="afegirproducte()">Afegir Producte <span class="glyphicon glyphicon-save"></span></button>
 
@@ -50,8 +48,9 @@
             <form>
                 <div>
                     <span><strong>Editar Producte</strong></span>
+                    <input data-ng-model="codiE"  />
                     <input data-ng-model="nomE"  />
-                   
+                    <input data-ng-model="seccioE"  />                  
                     <input data-ng-model="preuE" />
                     <br>
 
