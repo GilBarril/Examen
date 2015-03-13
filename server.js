@@ -7,7 +7,34 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
     res.render('index');
 });
+/*********************************angular**********************************/
 
+
+var express = require("express");
+var bodyParser = require("body-parser");
+var app = express();
+app.use(bodyParser.json());
+
+app.use("/api/productes",require("./controllers/api/producte"));
+//app.use("/",require("./controllers/static"));
+
+var options = {
+    root: __dirname + "/layouts"
+};
+
+/* aqui especifiques el layout que en aquest cas és examen.html*/
+app.get('/',function(req, res){
+    res.sendFile("producte.html",options);
+});
+
+/*app.listen(port, function() {
+    console.log('Server listening on',port);
+});
+*/
+
+
+
+/**************************************************************************/
 
 app.get('/ClicarBoles', function(req, res) {
     res.render('a1-1-5');
