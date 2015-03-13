@@ -1,0 +1,25 @@
+
+PRIMER DE TOT MIRAR DE NO TOCAR EL SERVER PERQUÈ ARA FUNCIONA PER L'ANGULAR.
+
+SERVER hi ha:
+
+El nom del layout per si s'ha de canviar.
+
+
+CARPETA NG:
+
+S'ha de tocar el productes.ctrl i el productes.svc per si s'han de canviar noms de variables i coses, ara esta com a productes.
+
+CARPETA MODELS:
+
+Has de crear el nou model, ara hi ha producte.
+
+CARPETA LAYOUT:
+
+Hi ha tot el document html per a la "vista".
+
+
+CARPETA CONTROLLERS/API/:
+
+Hi ha tot el que hi hauria al server. get,post,put,delete.
+

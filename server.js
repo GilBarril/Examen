@@ -1,12 +1,7 @@
-var express = require('express');
-var app = express();
 
-var port = process.env.PORT || 8080;
-app.set('view engine','ejs');
-app.use(express.static(__dirname + '/public'));
-app.get('/', function(req, res) {
-    res.render('index');
-});
+
+
+
 /*********************************angular**********************************/
 
 
@@ -14,6 +9,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var app = express();
 app.use(bodyParser.json());
+
+var port = process.env.PORT || 8080;
 
 app.use("/api/productes",require("./controllers/api/producte"));
 //app.use("/",require("./controllers/static"));
@@ -27,15 +24,26 @@ app.get('/',function(req, res){
     res.sendFile("producte.html",options);
 });
 
-/*app.listen(port, function() {
+app.listen(port, function() {
     console.log('Server listening on',port);
 });
-*/
+
 
 
 
 /**************************************************************************/
 
+/*
+ app.set('view engine','ejs');
+app.use(express.static(__dirname + '/public'));
+app.get('/', function(req, res) {
+    res.render('index');
+});
+ 
+var express = require('express');
+var app = express();
+ 
+ 
 app.get('/ClicarBoles', function(req, res) {
     res.render('a1-1-5');
 });
@@ -69,4 +77,4 @@ app.get('/receptes', function(req, res) {
 
 app.listen(port, function(){
     console.log('Tu aplicacio esta executant-se en el port: ' + port);
-});
+});*/
